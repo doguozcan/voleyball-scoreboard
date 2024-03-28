@@ -96,16 +96,80 @@ export const counterSlice = createSlice({
       }
     },
     decrementASetScore: (state) => {
+      // if game is not over
       if (state.teamAMatchScore !== 3 && state.teamBMatchScore !== 3) {
-        if (state.teamASetScore != 0) {
-          state.teamASetScore -= 1
+        // if not the last set
+        if (!(state.teamAMatchScore === 2 && state.teamBMatchScore === 2)) {
+          // if not over 24
+          if (state.teamASetScore <= 24 && state.teamBSetScore <= 24) {
+            if (state.teamASetScore != 0) {
+              state.teamASetScore -= 1
+            }
+          }
+          // if over 24
+          else {
+            if (state.teamASetScore + 1 === state.teamBSetScore) {
+              state.teamASetScore = 0
+              state.teamBSetScore = 0
+              state.teamBMatchScore += 1
+            }
+          }
+        }
+        // if last set
+        else {
+          // if not over 14
+          if (state.teamASetScore <= 14 && state.teamBSetScore <= 14) {
+            if (state.teamASetScore != 0) {
+              state.teamASetScore -= 1
+            }
+          }
+          // if over 14
+          else {
+            if (state.teamASetScore + 1 === state.teamBSetScore) {
+              state.teamASetScore = 0
+              state.teamBSetScore = 0
+              state.teamBMatchScore += 1
+            }
+          }
         }
       }
     },
     decrementBSetScore: (state) => {
-      if (state.teamAMatchScore !== 3 && state.teamBMatchScore !== 3) {
-        if (state.teamBSetScore != 0) {
-          state.teamBSetScore -= 1
+      // if game is not over
+      if (state.teamBMatchScore !== 3 && state.teamAMatchScore !== 3) {
+        // if not the last set
+        if (!(state.teamBMatchScore === 2 && state.teamAMatchScore === 2)) {
+          // if not over 24
+          if (state.teamBSetScore <= 24 && state.teamASetScore <= 24) {
+            if (state.teamBSetScore != 0) {
+              state.teamBSetScore -= 1
+            }
+          }
+          // if over 24
+          else {
+            if (state.teamBSetScore + 1 === state.teamASetScore) {
+              state.teamBSetScore = 0
+              state.teamASetScore = 0
+              state.teamAMatchScore += 1
+            }
+          }
+        }
+        // if last set
+        else {
+          // if not over 14
+          if (state.teamBSetScore <= 14 && state.teamASetScore <= 14) {
+            if (state.teamBSetScore != 0) {
+              state.teamBSetScore -= 1
+            }
+          }
+          // if over 14
+          else {
+            if (state.teamBSetScore + 1 === state.teamASetScore) {
+              state.teamBSetScore = 0
+              state.teamASetScore = 0
+              state.teamAMatchScore += 1
+            }
+          }
         }
       }
     },
