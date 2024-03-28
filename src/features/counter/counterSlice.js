@@ -10,38 +10,118 @@ export const counterSlice = createSlice({
   },
   reducers: {
     incrementASetScore: (state) => {
-      state.teamASetScore += 1
+      // if game is not over
+      if (state.teamAMatchScore !== 3 && state.teamBMatchScore !== 3) {
+        // if not in the last set
+        if (!(state.teamAMatchScore === 2 && state.teamBMatchScore === 2)) {
+          // if team a win the set with the set score of 25
+          if (state.teamASetScore == 24 && state.teamBSetScore < 24) {
+            state.teamASetScore = 0
+            state.teamBSetScore = 0
+            state.teamAMatchScore += 1
+          }
+          // if 24-24 and upper
+          else if (state.teamASetScore >= 24 && state.teamBSetScore >= 24) {
+            // if the difference is 2 after 24-24
+            if (state.teamASetScore - state.teamBSetScore === 1) {
+              state.teamASetScore = 0
+              state.teamBSetScore = 0
+              state.teamAMatchScore += 1
+            } else {
+              state.teamASetScore += 1
+            }
+          } else {
+            state.teamASetScore += 1
+          }
+        }
+        // last set, ends in 15
+        else {
+          if (state.teamASetScore == 15 && state.teamBSetScore < 14) {
+            state.teamASetScore = 0
+            state.teamBSetScore = 0
+            state.teamAMatchScore += 1
+          } else if (state.teamASetScore >= 14 && state.teamBSetScore >= 14) {
+            // if the difference is 2 after 14-14
+            if (state.teamASetScore - state.teamBSetScore === 1) {
+              state.teamASetScore = 0
+              state.teamBSetScore = 0
+              state.teamAMatchScore += 1
+            } else {
+              state.teamASetScore += 1
+            }
+          } else {
+            state.teamASetScore += 1
+          }
+        }
+      }
     },
     incrementBSetScore: (state) => {
-      state.teamBSetScore += 1
+      if (state.teamAMatchScore !== 3 && state.teamBMatchScore !== 3) {
+        if (!(state.teamBMatchScore === 2 && state.teamAMatchScore === 2)) {
+          if (state.teamBSetScore == 24 && state.teamASetScore < 24) {
+            state.teamBSetScore = 0
+            state.teamASetScore = 0
+            state.teamBMatchScore += 1
+          } else if (state.teamBSetScore >= 24 && state.teamASetScore >= 24) {
+            if (state.teamBSetScore - state.teamASetScore === 1) {
+              state.teamBSetScore = 0
+              state.teamASetScore = 0
+              state.teamBMatchScore += 1
+            } else {
+              state.teamBSetScore += 1
+            }
+          } else {
+            state.teamBSetScore += 1
+          }
+        }
+        // last set, ends in 15
+        else {
+          if (state.teamBSetScore == 15 && state.teamASetScore < 14) {
+            state.teamBSetScore = 0
+            state.teamASetScore = 0
+            state.teamBMatchScore += 1
+          } else if (state.teamBSetScore >= 14 && state.teamASetScore >= 14) {
+            // if the difference is 2 after 14-14
+            if (state.teamBSetScore - state.teamASetScore === 1) {
+              state.teamBSetScore = 0
+              state.teamASetScore = 0
+              state.teamBMatchScore += 1
+            } else {
+              state.teamBSetScore += 1
+            }
+          } else {
+            state.teamBSetScore += 1
+          }
+        }
+      }
     },
     decrementASetScore: (state) => {
-      state.teamASetScore -= 1
+      if (state.teamAMatchScore !== 3 && state.teamBMatchScore !== 3) {
+        if (state.teamASetScore != 0) {
+          state.teamASetScore -= 1
+        }
+      }
     },
     decrementBSetScore: (state) => {
-      state.teamBSetScore -= 1
-    },
-    incrementAMatchScore: (state) => {
-      state.teamAMatchScore += 1
-    },
-    incrementBMatchScore: (state) => {
-      state.teamBMatchScore += 1
+      if (state.teamAMatchScore !== 3 && state.teamBMatchScore !== 3) {
+        if (state.teamBSetScore != 0) {
+          state.teamBSetScore -= 1
+        }
+      }
     },
   },
 })
 
-export const aSetScore = (state) => state.counter.teamASetScore
-export const bSetScore = (state) => state.counter.teamBSetScore
-export const aMatchScore = (state) => state.counter.teamAMatchScore
-export const bMatchScore = (state) => state.counter.teamBMatchScore
+export const selectASetScore = (state) => state.counter.teamASetScore
+export const selectBSetScore = (state) => state.counter.teamBSetScore
+export const selectAMatchScore = (state) => state.counter.teamAMatchScore
+export const selectBMatchScore = (state) => state.counter.teamBMatchScore
 
 export const {
   incrementASetScore,
   incrementBSetScore,
   decrementASetScore,
   decrementBSetScore,
-  incrementAMatchScore,
-  incrementBMatchScore,
 } = counterSlice.actions
 
 export default counterSlice.reducer
