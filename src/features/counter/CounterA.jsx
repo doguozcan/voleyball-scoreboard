@@ -5,6 +5,7 @@ import {
   incrementAMatchScore,
 } from './counterSlice'
 import { aSetScore, aMatchScore } from './counterSlice'
+import { FaMinus, FaPlus } from 'react-icons/fa'
 
 const CounterA = () => {
   const setA = useSelector(aSetScore)
@@ -13,13 +14,28 @@ const CounterA = () => {
   const dispatch = useDispatch()
 
   return (
-    <div>
-      <button onClick={() => dispatch(decrementASetScore())}>Decrement</button>
-
-      <div>{setA}</div>
-      <div>{matchA}</div>
-
-      <button onClick={() => dispatch(incrementASetScore())}>Increment</button>
+    <div className="div bg-[#76ABAE] h-1/3 w-1/3 text-[#EEEEEE] border-2 rounded-md border-[#31363F] font-lato">
+      <div className="w-full h-1/6 text-3xl border rounded-md flex justify-center items-center">
+        {matchA}
+      </div>
+      <div className="w-full h-5/6 text-9xl flex justify-center items-center">
+        {setA}
+      </div>
+      <div className="flex justify-center space-x-3 p-3">
+        <button
+          className="text-3xl"
+          onClick={() => dispatch(decrementASetScore())}
+        >
+          <FaMinus />
+        </button>
+        <button
+          className="text-3xl"
+          onClick={() => dispatch(incrementASetScore())}
+        >
+          <FaPlus />
+        </button>
+      </div>
+      <p className="text-center text-3xl">HOME</p>
     </div>
   )
 }
