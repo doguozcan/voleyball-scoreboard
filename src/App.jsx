@@ -19,11 +19,9 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-[#222831] justify-center items-center">
-      <div className="flex h-full w-full justify-center items-center">
-        <CounterA />
-        <CounterB />
-      </div>
+    <div className="flex h-screen bg-[#222831] justify-center items-center">
+      <CounterA />
+      <CounterB />
     </div>
   )
 }
