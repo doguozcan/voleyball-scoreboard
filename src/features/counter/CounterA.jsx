@@ -1,15 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux'
-import {
-  incrementASetScore,
-  decrementASetScore,
-  incrementAMatchScore,
-} from './counterSlice'
-import { aSetScore, aMatchScore } from './counterSlice'
+import { incrementASetScore, decrementASetScore } from './counterSlice'
+import { selectASetScore, selectAMatchScore } from './counterSlice'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 
 const CounterA = () => {
-  const setA = useSelector(aSetScore)
-  const matchA = useSelector(aMatchScore)
+  const setA = useSelector(selectASetScore)
+  const matchA = useSelector(selectAMatchScore)
 
   const dispatch = useDispatch()
 
