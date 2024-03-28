@@ -1,3 +1,11 @@
+import CounterA from './features/counter/CounterA'
+import CounterB from './features/counter/CounterB'
+
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>
+  return (
+    <div>
+      <CounterA />
+      <CounterB />
+    </div>
+  )
 }
