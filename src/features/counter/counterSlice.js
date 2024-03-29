@@ -112,6 +112,8 @@ export const counterSlice = createSlice({
               state.teamASetScore = 0
               state.teamBSetScore = 0
               state.teamBMatchScore += 1
+            } else {
+              state.teamASetScore -= 1
             }
           }
         }
@@ -129,6 +131,8 @@ export const counterSlice = createSlice({
               state.teamASetScore = 0
               state.teamBSetScore = 0
               state.teamBMatchScore += 1
+            } else {
+              state.teamASetScore -= 1
             }
           }
         }
@@ -151,6 +155,8 @@ export const counterSlice = createSlice({
               state.teamBSetScore = 0
               state.teamASetScore = 0
               state.teamAMatchScore += 1
+            } else {
+              state.teamBSetScore -= 1
             }
           }
         }
@@ -168,6 +174,8 @@ export const counterSlice = createSlice({
               state.teamBSetScore = 0
               state.teamASetScore = 0
               state.teamAMatchScore += 1
+            } else {
+              state.teamBSetScore -= 1
             }
           }
         }
