@@ -36,7 +36,7 @@ export const counterSlice = createSlice({
         }
         // last set, ends in 15
         else {
-          if (state.teamASetScore == 15 && state.teamBSetScore < 14) {
+          if (state.teamASetScore == 14 && state.teamBSetScore < 14) {
             state.teamASetScore = 0
             state.teamBSetScore = 0
             state.teamAMatchScore += 1
@@ -76,7 +76,7 @@ export const counterSlice = createSlice({
         }
         // last set, ends in 15
         else {
-          if (state.teamBSetScore == 15 && state.teamASetScore < 14) {
+          if (state.teamBSetScore == 14 && state.teamASetScore < 14) {
             state.teamBSetScore = 0
             state.teamASetScore = 0
             state.teamBMatchScore += 1
