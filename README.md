@@ -31,4 +31,4 @@ Volleyball Scoreboard is an app that I've built in order to practice my Redux an
 
 ## Live Preview
 
-- You can visit <a href="https://marvelous-pudding-aa5f85.netlify.app/">the live preview</a>
+- You can visit <a href="https://zesty-fudge-88c73a.netlify.app/">the live preview</a>
