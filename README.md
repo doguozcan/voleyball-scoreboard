@@ -4,6 +4,9 @@
 
 Volleyball Scoreboard is an app that I've built in order to practice my Redux and Redux Toolkit skills. With this app, you can track your volleyball match's score.
 
+## Screenshot
+![volleyball](https://github.com/doguozcan/volleyball-scoreboard/assets/76822280/7a0c866f-09d3-4c3d-acd8-8879fc5011a4)
+
 ## Features
 
 - **Score Increment & Decrement**: You can keep track of the volleyball game by incrementing and decrementing the score.
